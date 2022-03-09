@@ -1,57 +1,98 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Meteor } from 'meteor/meteor';
-import { withTracker } from 'meteor/react-meteor-data';
-import { withRouter, NavLink } from 'react-router-dom';
-import { Menu, Dropdown, Header } from 'semantic-ui-react';
-import { Roles } from 'meteor/alanning:roles';
+import React, { Component } from 'react';
+import {
+  Container,
+  Dropdown,
+  Image,
+  Menu,
+} from 'semantic-ui-react';
 
-/** The NavBar appears at the top of every page. Rendered by the App Layout component. */
-class NavBar extends React.Component {
-  render() {
-    const menuStyle = { marginBottom: '10px' };
-    return (
-      <Menu style={menuStyle} attached="top" borderless inverted>
-        <Menu.Item as={NavLink} activeClassName="" exact to="/">
-          <Header inverted as='h1'>meteor-application-template</Header>
-        </Menu.Item>
-        {this.props.currentUser ? (
-          [<Menu.Item as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
-            <Menu.Item as={NavLink} activeClassName="active" exact to="/list" key='list'>List Stuff</Menu.Item>]
-        ) : ''}
-        {Roles.userIsInRole(Meteor.userId(), 'admin') ? (
-          <Menu.Item as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>
-        ) : ''}
-        <Menu.Item position="right">
-          {this.props.currentUser === '' ? (
-            <Dropdown id="login-dropdown" text="Login" pointing="top right" icon={'user'}>
+export default class Navbar extends Component {
+    navbar = {
+      boxShadow: 'none',
+      border: 'none',
+    };
+
+    render() {
+      return (
+        <Menu borderless style={this.navbar}>
+          <Container>
+            <Image size="medium" item
+              src="https://www.toyotahawaii.com/on/demandware.static/Sites-ToyotaHawaii-Site/-/default/dw65ae3f47/images/logo.svg"/>
+            <Dropdown item text="Vehicles">
               <Dropdown.Menu>
-                <Dropdown.Item id="login-dropdown-sign-in" icon="user" text="Sign In" as={NavLink} exact to="/signin"/>
-                <Dropdown.Item id="login-dropdown-sign-up" icon="add user" text="Sign Up" as={NavLink} exact to="/signup"/>
+                <Dropdown.Item>
+                  <Dropdown text="Cars + Vans">
+                    <Dropdown.Menu>
+                      <Dropdown.Item>2022 Camry</Dropdown.Item>
+                      <Dropdown.Item>2022 Corolla</Dropdown.Item>
+                      <Dropdown.Item>2022 Corolla Hatchback</Dropdown.Item>
+                      <Dropdown.Item>2022 Avalon</Dropdown.Item>
+                      <Dropdown.Item>2022 GR 86</Dropdown.Item>
+                      <Dropdown.Item>2022 GR Supra</Dropdown.Item>
+                      <Dropdown.Item>2022 Sienna</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Dropdown text="Crossovers + SUVS">
+                    <Dropdown.Menu>
+                      <Dropdown.Item>2022 CHR</Dropdown.Item>
+                      <Dropdown.Item>2022 Rav4</Dropdown.Item>
+                      <Dropdown.Item>2022 4Runner</Dropdown.Item>
+                      <Dropdown.Item>2022 Highlander</Dropdown.Item>
+                      <Dropdown.Item>2022 Sequoia</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Dropdown text="Trucks">
+                    <Dropdown.Menu>
+                      <Dropdown.Item>2022 Tacoma</Dropdown.Item>
+                      <Dropdown.Item>2022 Tundra</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Dropdown text="Electrified">
+                    <Dropdown.Menu>
+                      <Dropdown.Item className="item">2022 Prius</Dropdown.Item>
+                      <Dropdown.Item className="item">2022 Prius Prime</Dropdown.Item>
+                      <Dropdown.Item className="item">2022 Camry Hybrid</Dropdown.Item>
+                      <Dropdown.Item className="item">2022 Corolla Hybrid</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Dropdown text="Upcoming Vehicles">
+                    <Dropdown.Menu>
+                      <Dropdown.Item>2022 Tundra Hybrid</Dropdown.Item>
+                      <Dropdown.Item>2022 BZ4X</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-          ) : (
-            <Dropdown id="navbar-current-user" text={this.props.currentUser} pointing="top right" icon={'user'}>
+            <Menu.Item>
+                        Find a Dealer
+            </Menu.Item>
+            <Dropdown item text="Shopping Tools">
               <Dropdown.Menu>
-                <Dropdown.Item id="navbar-sign-out" icon="sign out" text="Sign Out" as={NavLink} exact to="/signout"/>
+                <Dropdown.Item>Toyota Hawaii Care</Dropdown.Item>
+                <Dropdown.Item>Finance</Dropdown.Item>
+                <Dropdown.Item>Extended Hybrid Warranty</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-          )}
-        </Menu.Item>
-      </Menu>
-    );
-  }
+            <Menu.Item>
+                        Offers
+            </Menu.Item>
+            <Dropdown item text="Community">
+              <Dropdown.Menu>
+                <Dropdown.Item>Holoholo with Mark Noguchi</Dropdown.Item>
+                <Dropdown.Item>UH Athletics</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Container>
+        </Menu>
+      );
+    }
 }
-
-// Declare the types of all properties.
-NavBar.propTypes = {
-  currentUser: PropTypes.string,
-};
-
-// withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
-const NavBarContainer = withTracker(() => ({
-  currentUser: Meteor.user() ? Meteor.user().username : '',
-}))(NavBar);
-
-// Enable ReactRouter for this component. https://reacttraining.com/react-router/web/api/withRouter
-export default withRouter(NavBarContainer);
