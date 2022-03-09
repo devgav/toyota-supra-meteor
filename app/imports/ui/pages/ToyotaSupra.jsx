@@ -1,7 +1,7 @@
 import React from 'react';
 import Middlemenu from '../components/Middlemenu';
-import Exterior from '../components/exterior';
-import Interior from '../components/interior';
+import Exterior from '../components/Exterior';
+import Interior from '../components/Interior';
 import SupraSpec from '../components/SupraSpec';
 
 export default class ToyotaSupra extends React.Component {
