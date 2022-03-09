@@ -120,71 +120,71 @@ i.inverted.circular.icon {
     opacity: 1 !important;
 }
 /*CUSTOM WIDTH FOR UI CONTAINER */
-.ui.container {
+.modified-container {
     width: 1498px;
 }
 
-.ui.grid.container {
+.modified-grid-container {
     width: calc( 1498px  +  2rem ) !important;
 }
 
-.ui.relaxed.grid.container {
+.modified-relaxed-grid-container {
     width: calc( 1498px  +  3rem ) !important;
 }
 
-.ui.very.relaxed.grid.container {
+.modified-very-relaxed-grid-container {
     width: calc( 1498px  +  5rem ) !important;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .ui.container {
+    .modified-container {
         width: 1498px;
     }
 
-    .ui.grid.container {
+    .modified-grid-container {
         width: calc( 1498px  +  2rem ) !important;
     }
 
-    .ui.relaxed.grid.container {
+    .modified-relaxed-grid-container {
         width: calc( 1498px  +  3rem ) !important;
     }
 
-    .ui.very.relaxed.grid.container {
+    .modified-very-relaxed-grid-container {
         width: calc( 1498px  +  5rem ) !important;
     }
 }
 
 /*Custom text color cuz semantic ui doesn't have it for some reason*/
 .text.white {
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }
 .text.grey {
-    color: #CCCCCC;
+    color: #CCCCCC !important;
 }
 .text.black {
-    color: #1B1C1D;
+    color: #1B1C1D !important;
 }
 .text.yellow {
-    color: #F2C61F;
+    color: #F2C61F !important;
 }
 .text.teal {
-    color: #00B5AD;
+    color: #00B5AD !important;
 }
 .text.red {
-    color: #FE0000;
+    color: #FE0000 !important;
 }
 .text.purple {
-    color: #564F8A;
+    color: #564F8A !important;
 }
 .text.pink {
-    color: #D9499A;
+    color: #D9499A !important;
 }
 .text.orange {
-    color: #E07B53;
+    color: #E07B53 !important;
 }
 .text.green {
-    color: #5BBD72;
+    color: #5BBD72 !important;
 }
 .text.blue {
-    color: #3B83C0;
+    color: #3B83C0 !important;
 }

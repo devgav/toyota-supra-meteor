@@ -11,9 +11,9 @@ import {
 export default class SupraSpec extends Component {
   render() {
     return (
-      <Container>
+      <Container className='modified-container modified-grid-container modified-relaxed-grid-container modified-very-relaxed-grid-container'>
         <Header as={'h1'} size={'huge'}>Models</Header>
-        <Grid container columns={'equal'} >
+        <Grid columns={'equal'}>
           <Grid.Row columns={2}>
             <Grid.Column width={3}>
               <Segment.Group>
@@ -25,7 +25,7 @@ export default class SupraSpec extends Component {
                   <Header as={'h3'} className="sub header">3.0</Header>
                 </Segment>
                 <Segment>
-                  <span className="ui large red header">$51,360 MSRP<span className="disc">1</span></span>
+                  <Header size='large' color='red'>$51,360 MSRP<span className="disc">1</span></Header>
                 </Segment>
                 <Segment>
                   <List bulleted>
@@ -54,7 +54,7 @@ export default class SupraSpec extends Component {
                   <Header as={'h3'} className="sub header">3.0 Premium</Header>
                 </Segment>
                 <Segment>
-                  <span className="ui large red header">$54,510 MSRP<span className="disc">1</span></span>
+                  <Header size='large' color='red'>$54,510 MSRP<span className="disc">1</span></Header>
                 </Segment>
                 <Segment>
                   <List bulleted>

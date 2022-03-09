@@ -11,9 +11,9 @@ import {
 export default class Middlemenu extends Component {
   render() {
     return (
-      <Container className={'ui container'}>
+      <Container className='modified-container modified-grid-container modified-relaxed-grid-container modified-very-relaxed-grid-container'>
         <br/>
-        <Image className="ui fluid image"
+        <Image
           src="https://www.toyotahawaii.com/on/demandware.static/-/Sites-Servco_master/default/dwc50a6fd8/images/model/GRSupra/hero/20_Supra_Hero_1498x331.jpg"
           alt="Toyota Supra"/>
         <br/>
@@ -21,7 +21,7 @@ export default class Middlemenu extends Component {
           <Grid.Row>
             <Grid.Column className="front-supra-size">
               <Container className="front-supra">
-                <Header as='h2' className={'text white'}>Find Your Supra</Header>
+                <Header as='h2' className='text white'>Find Your Supra</Header>
                 <Header as='h3' className='text white'>Pick your model, customize colors, options, and add accessories</Header>
                 <Button size="big" className="ui white button">Shop 2022 GR Supra</Button>
               </Container>
