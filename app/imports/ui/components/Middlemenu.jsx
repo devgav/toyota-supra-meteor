@@ -76,10 +76,10 @@ export default class Middlemenu extends Component {
             <Grid.Row>
               <Grid.Column className="text white column based" verticalAlign="bottom"
                 style={{ marginBottom: '-1%' }}>
-                <Header as='h1' style={{color: 'white'}}>
+                <Header as='h1' style={{ color: 'white' }}>
                                     Where sport meets comfort
                 </Header>
-                <Header as='h3' style={{color: 'white'}}>
+                <Header as='h3' style={{ color: 'white' }}>
                                     Designed with the driver in mind, the 2021 GR Supra’s interior is the ideal blend of
                                     form, function and beauty incorporating traditional GT elements with ultra-modern
                                     functionality. And, with standard leather trim and deeply bolstered sport seats

@@ -1,34 +1,34 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Meteor } from "meteor/meteor";
-import "semantic-ui-css/semantic.css";
-import { Roles } from "meteor/alanning:roles";
-import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import NavBar from "../components/NavBar";
-import ToyotaSupra from "../pages/ToyotaSupra";
-import NotFound from "../pages/NotFound";
-import Utilitybar from "../components/UtilityBar";
-import FooterMenu from "../components/FooterMenu";
-import Stickynavbar from "../components/StickyNavbar";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Meteor } from 'meteor/meteor';
+import 'semantic-ui-css/semantic.css';
+import { Roles } from 'meteor/alanning:roles';
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import NavBar from '../components/NavBar';
+import ToyotaSupra from '../pages/ToyotaSupra';
+import NotFound from '../pages/NotFound';
+import Utilitybar from '../components/UtilityBar';
+import FooterMenu from '../components/FooterMenu';
+import Stickynavbar from '../components/StickyNavbar';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
-    render() {
-        return (
-            <Router>
-                <div>
-                    <Utilitybar/>
-                    <NavBar/>
-                    <Stickynavbar/>
-                    <Switch>
-                        <Route exact path="/" component={ToyotaSupra}/>
-                        <Route component={NotFound}/>
-                    </Switch>
-                    <FooterMenu/>
-                </div>
-            </Router>
-        );
-    }
+  render() {
+    return (
+      <Router>
+        <div>
+          <Utilitybar/>
+          <NavBar/>
+          <Stickynavbar/>
+          <Switch>
+            <Route exact path="/" component={ToyotaSupra}/>
+            <Route component={NotFound}/>
+          </Switch>
+          <FooterMenu/>
+        </div>
+      </Router>
+    );
+  }
 }
 
 /**
@@ -37,16 +37,16 @@ class App extends React.Component {
  * @param {any} { component: Component, ...rest }
  */
 const ProtectedRoute = ({ component: Component, ...rest }) => (
-    <Route
-        {...rest}
-        render={(props) => {
-            const isLogged = Meteor.userId() !== null;
-            return isLogged ?
-                (<Component {...props} />) :
-                (<Redirect to={{ pathname: "/signin", state: { from: props.location } }}/>
-                );
-        }}
-    />
+  <Route
+    {...rest}
+    render={(props) => {
+      const isLogged = Meteor.userId() !== null;
+      return isLogged ?
+        (<Component {...props} />) :
+        (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
+        );
+    }}
+  />
 );
 
 /**
@@ -55,29 +55,29 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
  * @param {any} { component: Component, ...rest }
  */
 const AdminProtectedRoute = ({ component: Component, ...rest }) => (
-    <Route
-        {...rest}
-        render={(props) => {
-            const isLogged = Meteor.userId() !== null;
-            const isAdmin = Roles.userIsInRole(Meteor.userId(), "admin");
-            return (isLogged && isAdmin) ?
-                (<Component {...props} />) :
-                (<Redirect to={{ pathname: "/signin", state: { from: props.location } }}/>
-                );
-        }}
-    />
+  <Route
+    {...rest}
+    render={(props) => {
+      const isLogged = Meteor.userId() !== null;
+      const isAdmin = Roles.userIsInRole(Meteor.userId(), 'admin');
+      return (isLogged && isAdmin) ?
+        (<Component {...props} />) :
+        (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
+        );
+    }}
+  />
 );
 
 // Require a component and location to be passed to each ProtectedRoute.
 ProtectedRoute.propTypes = {
-    component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-    location: PropTypes.object
+  component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  location: PropTypes.object,
 };
 
 // Require a component and location to be passed to each AdminProtectedRoute.
 AdminProtectedRoute.propTypes = {
-    component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-    location: PropTypes.object
+  component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  location: PropTypes.object,
 };
 
 export default App;
